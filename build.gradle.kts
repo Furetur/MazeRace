@@ -9,6 +9,7 @@ plugins {
     application
     kotlin("jvm") version "1.4.21"
     kotlin("plugin.serialization") version "1.4.21"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 group = "com.example"
@@ -48,3 +49,7 @@ kotlin.sourceSets["test"].kotlin.srcDirs("test")
 
 sourceSets["main"].resources.srcDirs("resources")
 sourceSets["test"].resources.srcDirs("testresources")
+
+task("stage") {
+    dependsOn("shadowJar")
+}
