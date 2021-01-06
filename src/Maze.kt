@@ -67,10 +67,6 @@ class Maze(private val config: MazeConfig) {
 class InvalidMoveDirectionException(position: Position) : IllegalStateException("Cannot move to $position")
 
 fun generateMaze(): MazeConfig {
-    val map = listOf(
-        listOf(MazeCell.EMPTY, MazeCell.WALL, MazeCell.EMPTY),
-        listOf(MazeCell.EMPTY, MazeCell.WALL, MazeCell.EMPTY),
-        listOf(MazeCell.EMPTY, MazeCell.EMPTY, MazeCell.EMPTY)
-    )
-    return MazeConfig(map, Position(0, 0), Position(2, 2))
+    val mazeGenerator = MazeGenerator(MAZE_SIZE)
+    return mazeGenerator.generateMaze()
 }
